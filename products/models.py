@@ -12,3 +12,4 @@ class Product(models.Model):
     price = models.DecimalField(max_digits=5,decimal_places=2)
     description = models.TextField()
     size = models.CharField(max_length=2,choices=SIZE_CHOICES)
+    image = models.ImageField(upload_to='products/')
