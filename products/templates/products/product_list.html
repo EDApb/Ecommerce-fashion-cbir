@@ -1,19 +1,23 @@
-<style>
-    img {
-        width: 200px;
-        height: 250px;
-        object-fit: cover;
-    }
-</style>
-<h1>Catalogo</h1>
-{% for product in products %}
-    <div>
-   <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
-        <p>{{ product.description}}</p>
-        <p>Prezzo: €{{ product.price}}</p>
-        <p>Taglia: {{ product.size }}</p>
-        <img src="{{ product.image.url }}" alt="{{ product.name }}">
+{% extends 'products/base.html' %}
 
+{% block title %}Catalogo{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Catalogo</h1>
+<div class="row g-4">
+    {% for product in products %}
+    <div class="col-6 col-md-4 col-lg-3">
+        <div class="card h-100">
+            <img src="{{ product.image.url }}" class="card-img-top" alt="{{ product.name }}"
+                 style="height: 300px; object-fit: cover;">
+            <div class="card-body">
+                <h5 class="card-title">
+                    <a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a>
+                </h5>
+                <p class="card-text">{{ product.price }} €</p>
+            </div>
+        </div>
     </div>
-
-{% endfor %}
+    {% endfor %}
+</div>
+{% endblock %}

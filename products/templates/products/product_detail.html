@@ -1,9 +1,18 @@
-<img src="{{ product.image.url }}" alt="{{ product.name }}">
- 
-<div>
-        <h2>{{ product.name}}</h2>
-        <p>{{ product.description}}</p>
-        <p>Prezzo: €{{ product.price}}</p>
+{% extends 'products/base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<div class="row g-4">
+    <div class="col-md-6">
+        <img src="{{ product.image.url}}" class="img-fluid rounded" alt="{{product.name }}">
+    </div>
+    <div class="col-md-6">
+        <h1>{{product.name.url }}</h1>
+        <p>{{ product.description }}</p>
+        <p class="fs-4">{{ product.price }} €</p>
         <p>Taglia: {{ product.size }}</p>
-        <a href="{% url 'product_list' %}">  Torna al catalogo</a>
- </div>
+        <a href="{% url 'product_list' %}" class="btn btn-outline-dark">&larr; Torna al catalogo</a>
+    </div>
+</div>
+{% endblock %}
