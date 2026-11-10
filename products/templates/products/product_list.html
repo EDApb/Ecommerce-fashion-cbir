@@ -8,10 +8,12 @@
 <h1>Catalogo</h1>
 {% for product in products %}
     <div>
-        <h2>{{ product.name}}</h2>
+   <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
         <p>{{ product.description}}</p>
-        <p>Price: ${{ product.price}}</p>
+        <p>Prezzo: €{{ product.price}}</p>
+        <p>Taglia: {{ product.size }}</p>
         <img src="{{ product.image.url }}" alt="{{ product.name }}">
+
     </div>
 
 {% endfor %}
