@@ -18,6 +18,8 @@ def product_search(request):
     products = []
     if query:
         ids = search(query)
-        products = [Product.objects.get(pk=i) for i in ids]
-    return render(request, 'products/product_list.html',
-                  {'products': products, 'query': query})
+        by_pk = Product.objects.in_bulk(ids)
+        products = [by_pk[i] for i in ids if i in by_pk]
+    return render(request, 'products/product_list.html',        
+        {'products': products, 'query': query}
+    )
