@@ -10,6 +10,11 @@
     <nav class="navbar navbar-dark bg-dark mb-4">
         <div class="container">
             <a class="navbar-brand" href="{% url 'product_list' %}">Fashion Shop</a>
+            <form class="d-flex" method="get" action="{% url 'product_search' %}">
+                <input class="form-control me-2" type="text" name="q" value="{{ query }}" placeholder="Cerca...">
+                <button class="btn btn-outline-light" type="submit">Cerca</button>
+            </form>
+        
         </div>
     </nav>
 
